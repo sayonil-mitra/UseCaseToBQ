@@ -1,0 +1,6 @@
+[
+    {
+        "name": "All devices of home owner",
+        "query": "SELECT d.`entity.device_id`, d.`entity.device_type`, u.`entity.update_id`, u.`entity.platform` FROM `t_66d874954006bd33cd1a373c_t` AS d JOIN `t_66d87496f604240f96404570_t` AS u ON d.`entity.device_id` = u.`entity.device_id` JOIN `t_66d87495f604240f9640456d_t` AS h ON d.`entity.homeowner_id` = h.`entity.homeowner_id`;"
+    }
+]

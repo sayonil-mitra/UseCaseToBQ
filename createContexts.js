@@ -7,7 +7,7 @@ dotenv.config();
 
 const AUTH_TOKEN = process.env.TOKEN;
 const API_URL = "https://ig.gov-cloud.ai/pi-context-service/v1.0/contexts";
-const JSON_FILE_PATH = "./contexts.json"; // Path to your JSON file
+const JSON_FILE_PATH = "./createdSchemas/contextQueries/izak.json"; // Path to your JSON file
 
 // Function to extract schema IDs from a query
 const extractSchemaIds = (query) => {
@@ -38,29 +38,29 @@ const createContexts = async () => {
 
     for (const context of contextsArray) {
       const { name, query } = context;
-      const schemaIds = extractSchemaIds();
-
+      const schemaIds = extractSchemaIds(query);
       // Extract schema ID from context type definition
-      const schemaId = schemaIds[0];
 
       // Create context payload
       const contextPayload = {
         name: name,
         desc: name,
-        contextType: "SimpleContext",
+        contextType: "SIMPLECONTEXt",
         tags: {
           BLUE: ["context"],
         },
         universes: [process.env.UNIVERSE_ID],
         type: {
-          iContextType: type.iContextType,
-          schemaId,
+          iContextType: "SimpleContext",
+          schemaId: schemaIds[0],
           definition: {
-            rawQuery: type.definition.rawQuery,
-            tables: [schemaId],
+            rawQuery: query,
+            tables: [schemaIds[0]],
           },
         },
       };
+
+        console.log(contextPayload);
 
       try {
         const response = await axios.post(API_URL, contextPayload, {
