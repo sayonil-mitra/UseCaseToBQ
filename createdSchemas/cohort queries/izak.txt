@@ -1,0 +1,23 @@
+Join on Homeowner and Device with Group By Homeowner ID:
+
+SELECT h.`entity.homeowner_name`, COUNT(d.`entity.device_id`) AS device_count FROM t_66d87495f604240f9640456d_t h JOIN t_66d874954006bd33cd1a373c_t d ON h.`entity.homeowner_id` = d.`entity.homeowner_id` GROUP BY h.`entity.homeowner_id`;
+
+Join on Device and Feature with Group By Device ID:
+
+SELECT d.`entity.device_id`, COUNT(f.`entity.feature_id`) AS feature_count FROM t_66d874954006bd33cd1a373c_t d JOIN t_66d87495f604240f9640456e_t f ON d.`entity.device_id` = f.`entity.device_id` GROUP BY d.`entity.device_id`;
+
+Join on Playbook and Device with Group By Playbook ID:
+
+SELECT p.`entity.playbook_name`, COUNT(d.`entity.device_id`) AS device_count FROM t_66d874964006bd33cd1a373d_t p JOIN t_66d874954006bd33cd1a373c_t d ON p.`entity.device_id` = d.`entity.device_id` GROUP BY p.`entity.playbook_id`;
+
+Join on Alert and Device with Group By Alert Type:
+
+SELECT a.`entity.alert_type`, COUNT(d.`entity.device_id`) AS device_count FROM t_66d87496f604240f9640456f_t a JOIN t_66d874954006bd33cd1a373c_t d ON a.`entity.device_id` = d.`entity.device_id` GROUP BY a.`entity.alert_type`;
+
+Join on Consumption and Homeowner with Group By Homeowner ID:
+
+SELECT c.`entity.homeowner_id`, SUM(c.`entity.energy_usage`) AS total_energy_usage FROM t_66d874964006bd33cd1a373f_t c JOIN t_66d87495f604240f9640456d_t h ON c.`entity.homeowner_id` = h.`entity.homeowner_id` GROUP BY c.`entity.homeowner_id`;
+
+Join on Playbook and Homeowner with Group By Homeowner ID:
+
+SELECT h.`entity.homeowner_id`, COUNT(p.`entity.playbook_id`) AS playbook_count FROM t_66d874964006bd33cd1a373e_t p JOIN t_66d87495f604240f9640456d_t h ON p.`entity.device_id` = h.`entity.homeowner_id` GROUP BY h.`entity.homeowner_id`;

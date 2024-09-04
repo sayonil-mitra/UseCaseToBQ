@@ -6,7 +6,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node index",
-        "schemaBlaster":"node ./createSchema.js"
+        "schemaBlaster": "node ./createSchema.js",
+        "cohort": "node ./createCohorts.js",
+        "context": "node ./createContexts.js"
     },
     "author": "",
     "license": "ISC",
