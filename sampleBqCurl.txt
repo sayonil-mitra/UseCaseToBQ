@@ -1,0 +1,6 @@
+curl --location 'http://localhost:3000/bq' \
+--header 'Content-Type: application/json' \
+--data '{
+    "schemaId": "66d6ff014006bd33cd1a36ed",
+    "useCase": "E commerce website for books"
+}'
